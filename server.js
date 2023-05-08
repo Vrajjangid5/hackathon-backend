@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 mongoose
-	.connect(process.env.ATLAS_URI, {
+	.connect("mongodb+srv://vrajjangid5:6bpy69VwBUzJuNEi@cluster.rz95go2.mongodb.net/?retryWrites=true&w=majority", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
