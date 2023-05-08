@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const DocterSchema = new mongoose.Schema(
+let DocterSchema = new Schema(
     {
         name: { 
             type: String,
@@ -13,15 +14,13 @@ const DocterSchema = new mongoose.Schema(
         servicePincode: {
             type: String,
             required: true
-        },
-        specialist: {
-            type: String,
-            required: true
-        },
-        disease: {
-            type: String,
-            required: true
         }
-});
+    },
+    {
+		timestamps: true,
+		collection: "doctors",
+	}
+);
 
-module.exports = mongoose.model("Doctor", DocterSchema);
+export default mongoose.model("Doctor", DocterSchema);
+
