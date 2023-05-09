@@ -14,6 +14,26 @@ let DocterSchema = new Schema(
         servicePincode: {
             type: String,
             required: true
+        },
+        qualification: {
+            type: String,
+            required: true
+        },
+        experience: {
+            type: Number,
+            required: true
+        },
+        disease: {
+            type: String,
+            required: true
+        },
+        specialist: {
+            type: String,
+            required: true
+        },
+        contactDetail: {
+            type: String,
+            required: true
         }
     },
     {
