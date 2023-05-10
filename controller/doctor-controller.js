@@ -1,14 +1,19 @@
 import { Err } from "../helper/Err.js";
 import Doctor from "../model/Doctor.js";
 export const findDoctor = async (req, res, next) => {
-	let { pincode } = req.body;
+	let { query } = req.body;
 	try {
 		let doc = await Doctor.find({
-			servicePincode: pincode,
+			$or: [
+				{ name: { $regex: query, $options: "i" } },
+				{ servicePincode: { $regex: query, $options: "i" } },
+				{ address: { $regex: query, $options: "i" } },
+				{ disease: { $regex: query, $options: "i" } },
+			],
 		});
-		// if (!notes) {
-		// 	throw new Err(422, "Something went wrong");
-		// }
+		if (!doc) {
+			throw new Err(422, "Something went wrong");
+		}
 		res.status(200).send(doc);
 	} catch (error) {
 		next(error);

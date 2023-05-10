@@ -8,10 +8,13 @@ dotenv.config();
 const app = express();
 
 mongoose
-	.connect("mongodb+srv://vrajjangid5:6bpy69VwBUzJuNEi@cluster.rz95go2.mongodb.net/?retryWrites=true&w=majority", {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
+	.connect(
+		"mongodb+srv://vrajjangid5:6bpy69VwBUzJuNEi@cluster.rz95go2.mongodb.net/?retryWrites=true&w=majority",
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		}
+	)
 	.then((_) => {
 		console.log("Connected to database");
 	});
@@ -27,7 +30,6 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/", (req, res) => res.send("Not in production"));
-
 
 const port = process.env.PORT;
 
