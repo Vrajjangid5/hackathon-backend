@@ -29,6 +29,7 @@ export const setDoctor = async (req, res, next) => {
 		disease,
 		specialist,
 		contactDetail,
+		time,
 	} = req.body;
 	try {
 		let task = await Doctor.create({
@@ -40,6 +41,7 @@ export const setDoctor = async (req, res, next) => {
 			disease: disease,
 			specialist: specialist,
 			contactDetail: contactDetail,
+			time: time,
 		});
 		if (!task) {
 			throw new Err(422, "Something went wrong!");
@@ -51,3 +53,19 @@ export const setDoctor = async (req, res, next) => {
 		next(error);
 	}
 };
+
+export const addTime = async (req, res, next) => {
+	try{
+		let task = await Doctor.updateMany(
+			{},
+			{ $set : { time : "3pm to 7pm"}},
+			
+		);
+		if(!task) {
+			throw new Err(422, "Something went wrong");
+		}
+		res.status(200).send("Successful");
+	} catch (error) {
+		next(error);
+	}
+}

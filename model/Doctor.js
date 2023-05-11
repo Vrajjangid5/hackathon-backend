@@ -34,6 +34,10 @@ let DocterSchema = new Schema(
         contactDetail: {
             type: String,
             required: true
+        },
+        time: {
+            type: String,
+            required: true
         }
     },
     {
